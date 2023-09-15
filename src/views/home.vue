@@ -20,9 +20,9 @@ const fetchWeather = async () => {
   show.value = false
   const weathered = await WeatherAPI.getWeatherByCity(city.value)
   if (weathered) {
+    weather.value = weathered
     show.value = true
     loading.value = false
-    weather.value = weathered
   }
 }
 
@@ -34,12 +34,8 @@ onMounted(fetchWeather)
     <main class="main">
       <div class="container">
         <div class="laptop">
-          <!-- <div v-if="loading" class="loading">
-            <span>Loading...</span>
-          </div> -->
-          <div class="sections">
+          <div v-if="!failure && weather?.cod === 200 && !loading" class="sections">
             <section
-              v-if="!failure"
               v-show="show"
               v-motion-slide-visible-bottom
               :class="['section', 'section-left', { 'section-failure': failure }]"
@@ -57,16 +53,16 @@ onMounted(fetchWeather)
                 </div>
               </div>
             </section>
-            <section
-              v-if="!failure"
-              v-show="show"
-              v-motion-slide-visible-bottom
-              class="section section-right"
-            >
+            <section v-show="show" v-motion-slide-visible-bottom class="section section-right">
               <Highlights :weather="weather" />
             </section>
           </div>
-          <div v-if="!failure" v-show="show" v-motion-slide-visible-bottom class="sections">
+          <div
+            v-if="!failure && weather?.cod === 200"
+            v-show="show"
+            v-motion-slide-visible-bottom
+            class="sections"
+          >
             <Coords :coord="weather?.coord" />
             <Humidity :humidity="weather?.main?.humidity" />
           </div>

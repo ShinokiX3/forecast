@@ -56,4 +56,5 @@ export interface IWeatherObject {
   visibility: number
   weather: IWeather[]
   wind: IWind
+  message?: string
 }
