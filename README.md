@@ -1,6 +1,7 @@
 # forecast
 
 This template should help get you started developing with Vue 3 in Vite.
+
 Template and idea of application -> https://github.com/Nakonsta/Forecast-layout
 
 ## Recommended IDE Setup
