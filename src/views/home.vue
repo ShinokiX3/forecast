@@ -9,7 +9,7 @@ import Humidity from '../components/humidity.vue'
 import Coords from '../components/coords.vue'
 
 const city = ref<string>('Kiev')
-const show = ref<boolean>(false)
+const show = ref<boolean>(true)
 const loading = ref<boolean>(true)
 
 const weather = ref<null | IWeatherObject>(null)
